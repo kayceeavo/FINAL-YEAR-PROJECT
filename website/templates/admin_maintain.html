@@ -1,0 +1,77 @@
+
+{% extends "adminbase.html" %}
+ {% block title %}admin maintainance{% endblock %}
+
+{% block  content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+    {% if category == 'error' %}
+<div class="alert alert-danger" role="alert" xmlns="http://www.w3.org/1999/html">
+            {{message}}
+            <button type="button" class="close" data-dismiss ="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+    {% else %}
+
+        <div class="alert alert-success"  role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss ="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+<form method ="POST" enctype="multipart/form-data" >
+
+    <div id="admin-middle-signup" class="panel panel-default">
+
+        <div class="panel-heading">
+            <h4> CANDIDATE REGISTRATION </h4>
+        </div>
+
+        <div id="panel-body-signup" class="panel-body">
+
+           <div class="form-group">
+                <label for="firstname" >Candidate FirstName</label>
+                <input name="firstname" type="text" class="form-control" id="firstname" placeholder="firstname">
+           </div>
+
+            <div class="form-group">
+                <label for="lastname" >Candidate Last Name</label>
+                <input name="lastname" type="text" class="form-control" id="lastname" placeholder="lastname">
+           </d,iv>
+
+           <div class="form-group" >
+                   <label for="email">Candidate Email Address</label>
+                    <input name="email" type="text" class="form-control" id="email" placeholder="Enter email">
+           </div>
+
+            <div class="form-group" >
+                   <label for="manifesto">Candidate Manifesto</label>
+                    <input name="manifesto" type="text" class="form-control" id="manifesto" placeholder="Enter manifesto">
+           </div>
+
+           <div class="form-group" >
+                   <label for="option">Candidate post</label>
+                       <input type="radio" name="options" id="option1" value="president"> President</input>
+            <input type="radio" name="options" id="option2" value="vice-president"> Vice-President</input>
+           </div>
+
+        </div>
+
+               <button id="submit-btn" type="submit" class="btn btn-primary" > Submit</button>
+
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

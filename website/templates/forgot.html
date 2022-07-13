@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+ {% block title %}Home{% endblock %}
+
+{% block  content %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+    {% if category == 'error' %}
+        <div class="alert alert-danger "  role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss ="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+    {% else %}
+        <div class="alert alert-success "  role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss ="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+
+
+<form method ="POST" >
+    <div id="middle" class="panel panel-default">
+
+         <div class="panel-heading">
+            <h4>INPUT EMAIL USED</h4>
+        </div>
+
+        <div id="middle-login" class="panel-body">
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="forgot_email" id="forgot_email" type="text" class="form-control"  placeholder="Input Forgot Email">
+            </div>
+
+
+            <div>
+               <button id="submit-btn1" type="submit" class="btn btn-primary" > SEARCH</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

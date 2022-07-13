@@ -1,0 +1,54 @@
+{% extends "base.html" %}  {% block title %}vice{% endblock %}  {% block content %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+    {% if category == 'error' %}
+        <div class="alert alert-danger alter-dismissible-fade-show"  role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss ="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+
+    {% else %}
+        <div class="alert alert-success alter-dismissible-fade-show"  role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss ="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form method = "POST">
+
+    <div class="vote-middle">
+
+        <h3 class="title_vote">Candidates for the Vice-President Post</h3>
+
+        {% for vicef, vicel, vice_man in data1 %}
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <img class="card-img-top" src="static/images/kano3.jpg" alt="candidate one card image cap">
+                    <h5 id="firstname" class="card-title"> {{vicef}} {{vicel}} </h5>
+                    <p  class="card-text"> Manifesto: {{vice_man}}</p>
+                    <button name="vote_btn" id="vote-btn" id="submit-btn1" type="submit" class="btn btn-primary" value={{vicef}}> vote</button>
+
+                </div>
+
+            </div>
+
+        {% endfor%}
+    </div>
+
+</form>
+
+{% endblock %}
